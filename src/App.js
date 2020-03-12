@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Switch, Route, Link, NavLink, useParams} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import NavBar from "./NavBar";
 import Gallery from "./Gallery";
 import SearchForm from "./SearchForm";
@@ -28,7 +28,6 @@ class App extends Component {
   }
 
 
-
   render(){
     return(
     <div className="container">
@@ -39,9 +38,11 @@ class App extends Component {
           <Route exact path="/">
             <Gallery />
           </Route>
-          <Route path="/search/:query">
-            <Gallery photos={this.state.photos} handleSearch={this.handleRequest}/>
-          </Route>
+          <Route path="/search/:query" render= {({match}) => (
+                  <Gallery routeProps= {match} photos={this.state.photos} handleSearch={this.handleRequest}/>
+                )}
+           />
+
           {/* <Route path="*">
             <Error />
           </Route> */}
