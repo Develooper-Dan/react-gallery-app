@@ -5,8 +5,8 @@ const NavBar = () =>
   <nav className="main-nav">
     <ul>
       <li><NavLink to='/search/robots'>Robots</NavLink></li>
-      <li><NavLink to='/search/space'>Space</NavLink></li>
-      <li><NavLink to='/search/metal'>Metal</NavLink></li>
+      <li><NavLink to='/search/people'>People</NavLink></li>
+      <li><NavLink to='/search/metalmusic'>Metal</NavLink></li>
     </ul>
   </nav>
 
