@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import NavBar from "./NavBar";
+import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import Header from "./Header";
+import Error from "./Error";
 import Gallery from "./Gallery";
-import SearchForm from "./SearchForm";
 import axios from "axios";
 import apiKey from "./data/config";
 
@@ -11,41 +11,56 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      photos: []
+      photos: [],
+      loading: false
     }
   }
 
+// This method is used for fetching the image-data from the Flickr-API and then to update the "photos"-state with an array of the received data.
+// It gets passed down to the SearchForm and Gallery component. Also toggles the "loading"-state which is used by the Gallery to display a message while the data is fetched.
   handleRequest= (query) => {
-    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+    const tags = query.replace(/\s|\+|&/g, ",");
+    this.setState({loading: true})
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${tags}&sort=relevance&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
           photos: response.data.photos.photo
         })
       })
+      .then(() => {
+        this.setState({loading: false})
+      })
       .catch(error => {
-        console.log('Error fetching and parsing data', error);
+        console.error('Error fetching and parsing data', error);
       });
   }
-
-
+// The Router uses only 3 different Routes: the main route (which actually redirects to the search route), the search route and an 404-error route
   render(){
     return(
     <div className="container">
       <Router>
-        <SearchForm handleSearch={this.handleRequest}/>
-        <NavBar />
         <Switch>
           <Route exact path="/">
-            <Gallery />
+            <Redirect to="/search/robots"/>
           </Route>
-          <Route path="/search/:query" render= {({match}) => (
-                  <Gallery routeProps= {match} photos={this.state.photos} handleSearch={this.handleRequest}/>
-                )}
-           />
 
-          {/* <Route path="*">
-            <Error />
-          </Route> */}
+          <Route path="/search/:query" render= {({match, history}) => (
+            <>
+              <Header
+                routeProps= {history}
+                handleRequest={this.handleRequest}
+              />
+              <Gallery
+                routeProps= {match}
+                loadingState= {this.state.loading}
+                photos={this.state.photos}
+                handleSearch={this.handleRequest}
+              />
+            </>
+            )}
+          />
+
+          <Route path="*" component= {Error} />
         </Switch>
       </Router>
     </div>
