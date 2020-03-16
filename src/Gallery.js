@@ -5,12 +5,12 @@ import Image from "./Image"
 class Gallery extends Component {
 
 componentDidMount(){
-  this.props.handleSearch(this.props.routeProps.params.query)
+  this.props.handleSearch(this.props.routeMatch.params.query)
 }
 
 componentDidUpdate(prevProps){
-  if(this.props.routeProps.params.query !== prevProps.routeProps.params.query)
-  this.props.handleSearch(this.props.routeProps.params.query)
+  if(this.props.routeMatch.params.query !== prevProps.routeMatch.params.query)
+  this.props.handleSearch(this.props.routeMatch.params.query)
 }
 
 createGallery(photos){
@@ -30,7 +30,7 @@ render(){
     }
 return(
       <div className="photo-container">
-        <h2>Results for {this.props.routeProps.params.query}</h2>
+        <h2>Results for {this.props.routeMatch.params.query}</h2>
         <ul>
           {this.createGallery(photos)}
         </ul>
