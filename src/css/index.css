@@ -4,6 +4,7 @@ body {
   color: #3f4850;
 }
 
+
 h2 {
   font-size: 2em;
   margin: 52px 0 40px;
@@ -17,6 +18,22 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.header{
+  background-color: #797979;
+  position: fixed;
+  top:0;
+  right:0;
+  left:0;
+  z-index: 1;
+  margin-top: 0px;
+}
+
+.heading{
+  font-family: 'Permanent Marker', cursive, sans-serif;
+  color: #FFF;
+  text-shadow: 3px 3px 5px #000;
 }
 
 .search-form {
@@ -45,9 +62,15 @@ input {
   outline: none;
 }
 
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+}
+
 .main-nav li {
-  width: 100%;
-  margin-bottom: 1em;
+  width: 100px;
+  margin: 1em;
 }
 
 .main-nav a {
@@ -62,6 +85,10 @@ input {
 .main-nav a:hover,
 .search-form button:hover {
   background-color: #275270;
+}
+
+.photo-container {
+    margin: 250px auto;
 }
 
 .photo-container ul {
@@ -94,37 +121,51 @@ input {
   z-index: 1;
 }
 
-.photo-container .not-found {
-  width: 100%;
+.not-found {
+  margin: 250px
+}
+
+.error h1{
+  font-family: 'Parisienne', cursive, sans-serif;
+}
+
+.error button {
+  margin-top: 20px;
+  padding: 5px 10px 5px 10px;
+  border: 3px solid #d7dbdf;
+  font-size: 15px
+}
+
+button:hover {
+  background-color:  #24334b;
+  color: #FFF
 }
 
 @media only screen and (max-width: 767px)  {
   body {
-    padding-top: 2em;
+    padding: 2em;
   }
 
-  .photo-container li {
-    margin: auto;
+.photo-container ul {
+    justify-content: center;
+}
+  .search-form {
+    margin-bottom: 20px;
   }
 }
 
 @media only screen and (min-width: 768px)  {
   body {
-    padding-top: 4em;
+    padding: 4em;
   }
 
-  .container {
+h1{
+    font-size: 40px;
+}
+
+  .photo-container {
     max-width: 960px;
-    margin: auto;
+
   }
 
-  .main-nav ul {
-    display: flex;
-    justify-content: center;
-  }
-
-  .main-nav li {
-    margin: 10px;
-    width: 100px;
-  }
 }
