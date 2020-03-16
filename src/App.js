@@ -47,11 +47,11 @@ class App extends Component {
           <Route path="/search/:query" render= {({match, history}) => (
             <>
               <Header
-                routeProps= {history}
+                routeHistory= {history}
                 handleRequest={this.handleRequest}
               />
               <Gallery
-                routeProps= {match}
+                routeMatch= {match}
                 loadingState= {this.state.loading}
                 photos={this.state.photos}
                 handleSearch={this.handleRequest}
