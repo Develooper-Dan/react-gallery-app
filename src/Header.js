@@ -6,7 +6,7 @@ const Header = (props) =>
   <div className="header">
     <h1 className="heading">Just a little gallery app</h1>
     <SearchForm
-      routeProps= {props.history}
+      routeProps= {props.routeHistory}
       handleSearch={props.handleRequest}/>
     <NavBar />
   </div>
