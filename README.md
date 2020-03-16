@@ -1,7 +1,20 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Gallery app with react
 
-## Available Scripts
+This app lets the user display several images (currently 24) on a page. The image data is fetched from the Flickr API each time the user requests pictures with different tags. The routes change depending on the chosen tag(s) so that it's possible to navigate via the browsers back / forward buttons.
 
+### Main mechanics and functionality
+- The page is basically split into 3 routes: the main route (which actually redirects to the search route with a default query), the dynamic search route with a query-parameter and a 404-error route. All routes are set up in the App-component. The app component also manages the data of the requested images in it's state
+- To search for images the user can either click on of the topics in the NavBar or type a search term into the form input of the SearchForm component
+- If the search returns no results, an informative message is displayed
+- The user can also navigate through the visited routes via the browsers nav buttons
+
+### Styling
+
+- I chose a sticky header with a contrasting bg-color (compared to the gallery) and placed the navigation elements inside
+- If a user hovers over an image it gets scaled up and shown in full resolution
+
+
+### Usage
 In the project directory, you can run:
 
 ### `npm start`
@@ -12,57 +25,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Credits
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It also uses the React Router library(https://reacttraining.com/react-router/) for setting up the different routes and axios (https://github.com/axios/axios) for handling the fetch requests.
