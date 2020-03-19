@@ -23,7 +23,11 @@ createGallery(photos){
 render(){
     const photos = this.props.photos;
     if(this.props.loadingState){
-      return <h2>Loading...</h2>
+      return (
+        <div className="photo-container">
+         <h2>Loading...</h2>
+       </div>
+     )
     }
     if(photos.length === 0){
       return <NoResults />
