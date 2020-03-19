@@ -15,12 +15,27 @@ This app lets the user display several images (currently 24) on a page. The imag
 
 
 ### Usage
-In the project directory, you can run:
+In the project directory, first run:
 
-### `npm start`
+#### `npm install`
+This will download all the projects dependencies listed in the package.json files and install them locally. If you're unfamiliar with npm, you might want to visit https://docs.npmjs.com/about-npm/
+for further reference.
+
+#### `get a Flickr API key`
+To get images from the Flickr API you'll first need to create a Flickr-Account and the request your own key here:
+https://www.flickr.com/services/apps/create/apply/
+
+#### `create config.js`
+Create a file called config.js and place it in "data"-folder inside the src folder. The file will hold the Flickr-API key and should look like this:
+
+const apiKey = 'iamthekey123';
+
+export default apiKey;
+
+#### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open (http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
